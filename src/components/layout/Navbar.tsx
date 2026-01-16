@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { name: "首页", href: "#home" },
-  { name: "关于我", href: "#about" },
-  { name: "项目展示", href: "#projects" },
-  { name: "联系方式", href: "#contact" },
+  { name: "首页", href: "/" },
+  { name: "关于我", href: "/about" },
+  { name: "项目展示", href: "/projects" },
+  { name: "博客", href: "/blog" },
+  { name: "联系方式", href: "/contact" },
 ];
 
 export const Navbar = () => {
@@ -32,28 +34,23 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <motion.a
-            href="#home"
+          <Link
+            to="/"
             className="text-xl font-bold bg-gradient-primary text-transparent bg-clip-text"
-            whileHover={{ scale: 1.05 }}
           >
             Portfolio
-          </motion.a>
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item, index) => (
-              <motion.a
+            {navItems.map((item) => (
+              <Link
                 key={item.name}
-                href={item.href}
+                to={item.href}
                 className="text-foreground/80 hover:text-foreground transition-colors"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.1 }}
               >
                 {item.name}
-              </motion.a>
+              </Link>
             ))}
           </div>
 
@@ -76,14 +73,14 @@ export const Navbar = () => {
           >
             <div className="px-4 py-4 space-y-4">
               {navItems.map(item => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
+                  to={item.href}
                   className="block text-foreground/80 hover:text-foreground transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
             </div>
           </motion.div>
