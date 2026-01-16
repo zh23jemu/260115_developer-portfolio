@@ -2,12 +2,6 @@ import { motion } from "framer-motion";
 import { FadeIn } from "../components/common/FadeIn";
 import { skills } from "../data/mockData";
 
-const skillLevelColors = {
-  beginner: "bg-yellow-500",
-  intermediate: "bg-blue-500",
-  advanced: "bg-green-500",
-};
-
 export const About = () => {
   return (
     <section id="about" className="py-20 px-4">
@@ -48,7 +42,11 @@ export const About = () => {
                     transition={{ delay: 0.4 + index * 0.1 }}
                     whileHover={{ scale: 1.1 }}
                   >
-                    <span className="w-2 h-2 rounded-full {skillLevelColors[skill.level]}" />
+                    <span className={`w-2 h-2 rounded-full ${
+                      skill.level === 'beginner' ? 'bg-yellow-500' :
+                      skill.level === 'intermediate' ? 'bg-blue-500' :
+                      'bg-green-500'
+                    }`} />
                     <span className="font-medium">{skill.name}</span>
                   </motion.span>
                 ))}

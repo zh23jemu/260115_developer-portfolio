@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { getIcon } from "../../utils/icons";
 
 const navItems = [
   { name: "首页", href: "#home" },
